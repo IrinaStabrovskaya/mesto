@@ -1,0 +1,3 @@
+.photos__heart-btn_active:disabled {
+  background: url(../../../../images/icons/heart-black-icon.svg) no-repeat center / cover;
+}

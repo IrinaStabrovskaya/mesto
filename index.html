@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Страница о разных местах">
+  <meta name="keywords" content="интересные места для путешествий">
+  <meta name="author" content="Ирина Стабровская">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>mesto</title>
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <div class="header__logo"></div>
+  </header>
+
+  <main class="content">
+
+    <section class="profile">
+      <img class="profile__avatar" src="./images/kusto.jpg" alt="аватар пользователя">
+      <div class="profile__info">
+        <div class="profile__description">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__edit-btn btn-hover">
+
+        </button>
+      </div>
+      <button class="profile__add-btn btn-hover">
+
+      </button>
+    </section>
+
+    <section class="photos">
+      <ul class="photos__elements">
+        <li class="photos__element">
+          <img class="photos__image" src="./images/photos/karachaevsk.jpg" alt="фотография города Карачаевска">
+          <div class="photos__description">
+            <h2 class="photos__title">Карачаевск</h2>
+            <button class="photos__heart-btn photos__heart-btn_active btn-hover"></button>
+          </div>
+        </li>
+
+        <li class="photos__element">
+          <img class="photos__image" src="./images/photos/elbrus.jpg" alt="фотография горы Эльбрус">
+          <div class="photos__description">
+            <h2 class="photos__title">Эльбрус</h2>
+            <button class="photos__heart-btn photos__heart-btn_active btn-hover"></button>
+          </div>
+        </li>
+
+        <li class="photos__element">
+          <img class="photos__image" src="./images/photos/dombai.jpg" alt="фотография горной гряды Домбай">
+          <div class="photos__description">
+            <h2 class="photos__title">Домбай</h2>
+            <button class="photos__heart-btn photos__heart-btn_active btn-hover"></button>
+          </div>
+        </li>
+
+        <li class="photos__element">
+          <img class="photos__image" src="./images/photos/baikal.jpg" alt="фотография озера Байкал">
+          <div class="photos__description">
+            <h2 class="photos__title">Байкал</h2>
+            <button class="photos__heart-btn photos__heart-btn_active btn-hover"></button>
+          </div>
+        </li>
+
+        <li class="photos__element">
+          <img class="photos__image" src="./images/photos/canyon.jpg" alt="фотография Сулакского каньона">
+          <div class="photos__description">
+            <h2 class="photos__title">Сулакский каньон</h2>
+            <button class="photos__heart-btn photos__heart-btn_active btn-hover"></button>
+          </div>
+        </li>
+
+        <li class="photos__element">
+          <img class="photos__image" src="./images/photos/russkiy.jpg" alt="фотография острова Русский">
+          <div class="photos__description">
+            <h2 class="photos__title">о.Русский</h2>
+            <button class="photos__heart-btn photos__heart-btn_active btn-hover"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+  </footer>
+
+  <section class="pop-up">
+    <div class="pop-up__container">
+      <button class="pop-up__close-btn btn-hover"></button>
+      <div class="pop-up__content">
+        <h2 class="pop-up__title">Редактировать профиль</h2>
+        <form class="pop-up__form" action="#">
+          <input class="pop-up__form-input-name" type="text" name="name" value="Жак-Ив Кусто">
+          <input class="pop-up__form-input-job" type="text" name="job" value="Исследователь океана">
+          <button class="pop-up__form-save-btn" type="submit" name="save-btn">Сохранить</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="pop-up.js"></script>
+</body>
+
+</html>

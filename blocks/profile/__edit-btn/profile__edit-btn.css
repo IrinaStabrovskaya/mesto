@@ -1,0 +1,16 @@
+.profile__edit-btn {
+  margin: 34px auto 0 10px;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  background: #000 url("../../../images/icons/pencil-icon.svg") no-repeat center;
+  border: 1px solid #fff;
+}
+
+@media screen and (min-width: 1280px) {
+  .profile__edit-btn {
+    margin: 37px 244px 0 18px;
+    width: 24px;
+    height: 24px;
+  }
+}
