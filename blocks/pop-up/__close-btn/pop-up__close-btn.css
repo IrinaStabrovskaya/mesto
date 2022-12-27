@@ -1,7 +1,7 @@
 .pop-up__close-btn {
   margin-bottom: 16px;
-  width: 20px;
-  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   padding: 0;
   background: url(../../../images/icons/close-icon.svg) no-repeat center / cover;
   border: none;
@@ -11,7 +11,7 @@
 @media screen and (min-width: 1280px) {
   .pop-up__close-btn {
     margin-bottom: 8px;
-    width: 32px;
-    height: 32px;
+    max-width: 32px;
+    max-height: 32px;
   }
 }

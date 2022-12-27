@@ -2,7 +2,7 @@
   margin-top: 75px;
   padding: 0;
   width: 100%;
-  height: 27px;
+  min-height: 27px;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

@@ -1,7 +1,7 @@
 .photos__heart-btn {
   margin: 31px 20px 0 auto;
   width: 22px;
-  height: 19px;
+  min-height: 19px;
   padding: 0;
   background: url(../../../images/icons/heart-icon.svg) no-repeat center / cover;
   border: none;
