@@ -1,7 +1,7 @@
 .photos__element {
   margin: 0;
   width: 100%;
-  min-height: 361px;
+  height: 361px;
   background: #fff;
   border-radius: 10px;
   color: #000;
