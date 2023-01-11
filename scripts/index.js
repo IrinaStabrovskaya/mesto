@@ -7,9 +7,6 @@ let jobInput = document.querySelector('.pop-up__form-input_type_job');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
-nameInput.getAttribute('value');
-jobInput.getAttribute('value');
-
 function openPopUp() {
   popUp.classList.add('pop-up_opened');
 
