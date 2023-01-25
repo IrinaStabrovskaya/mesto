@@ -1,4 +1,5 @@
 .photos__element {
+  position: relative;
   margin: 0;
   width: 100%;
   height: 361px;
