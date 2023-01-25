@@ -3,6 +3,9 @@
   flex-direction: column;
   margin-right: 19px;
   margin-bottom: 16px;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 500ms;
 }
 
 @media screen and (min-width: 1280px) {
