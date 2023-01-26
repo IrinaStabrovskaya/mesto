@@ -114,9 +114,8 @@ buttonOpenPopUpEdit.addEventListener('click', function () {
 
 // открытие попапа добавления карточки
 buttonOpenPopUpAdd.addEventListener('click', function () {
+  formElementCreate.reset();
   openPopUp(popUpCreate);
-  placeTitleInputCreate.value = placeTitleInputCreate.ariaPlaceholder;
-  linkInputCreate.value = linkInputCreate.ariaPlaceholder;
 });
 
 
