@@ -1,5 +1,5 @@
 .pop-up__form-save-btn {
-  margin-top: 45px;
+  margin-top: 16px;
   padding: 0;
   min-width: 238px;
   min-height: 46px;
@@ -20,7 +20,7 @@
 
 @media screen and (min-width: 1280px) {
   .pop-up__form-save-btn {
-    margin-top: 52px;
+    margin-top: 19px;
     min-width: 358px;
     min-height: 50px;
     font-size: 18px;
