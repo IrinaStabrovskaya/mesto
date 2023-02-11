@@ -20,10 +20,25 @@ function hideInputError(formItem, inputItem, config) {
   errorElement.textContent = '';
 };
 
+//функция очистки ошибок
+function cleanErrors(formItem, config) {
+  const errorsElement = formItem.querySelectorAll(config.errorSelector);
+  errorsElement.forEach((errorElement) => {
+    errorElement.classList.remove(config.classErrorActive);
+    errorElement.textContent = '';
+  });
+
+  const inputsItem = formItem.querySelectorAll(config.inputErrorSelector);
+  inputsItem.forEach((inputItem) => {
+    inputItem.classList.remove(config.classInputError);
+  });
+};
+
+
 // проверка валидности инпута
 function checkInputValidity(formItem, inputItem, config) {
 
-  if(!inputItem.validity.valid) {
+  if (!inputItem.validity.valid) {
     showInputError(formItem, inputItem, config, inputItem.validationMessage);
   } else {
     hideInputError(formItem, inputItem, config);
@@ -46,8 +61,9 @@ function addInputListeners(formItem, config) {
   });
 };
 
+
 //функция наложения валидации
-function enableValidation (config) {
+function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formItem) => {
     formItem.addEventListener('submit', cancelSubmit);

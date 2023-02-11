@@ -53,12 +53,12 @@ function closePopUpByEsc(event) {
 const popups = document.querySelectorAll('.pop-up');
 
 popups.forEach((popup) => {
-    popup.addEventListener('mousedown', function(evt) {
-      if(!evt.target.closest('.pop-up__container')) {
-        closePopUp(evt.target.closest('.pop-up'));
-      };
-    });
+  popup.addEventListener('mousedown', function (evt) {
+    if (!evt.target.closest('.pop-up__container')) {
+      closePopUp(evt.target.closest('.pop-up'));
+    };
   });
+});
 
 
 
@@ -135,16 +135,17 @@ formCreate.addEventListener('submit', handleFormSubmitCreate);
 buttonOpenPopUpEdit.addEventListener('click', function () {
   nameInputEdit.value = profileTitle.textContent;
   jobInputEdit.value = profileSubtitle.textContent;
+  cleanErrors(formEdit, formValidationConfig);
   openPopUp(popUpEdit);
 });
 
 // открытие попапа добавления карточки
 buttonOpenPopUpAdd.addEventListener('click', function () {
   formCreate.reset();
+  cleanErrors(formCreate, formValidationConfig);
   toggleButtonSubmit(formCreate, formValidationConfig);
   openPopUp(popUpCreate);
 });
-
 
 
 
