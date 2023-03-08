@@ -1,4 +1,4 @@
-const formValidationConfig = {
+export const formValidationConfig = {
   formSelector: '.pop-up__form', //form
   inputSelector: '.pop-up__form-input', //input
   inputErrorSelector: '.pop-up__form-input_type_error',

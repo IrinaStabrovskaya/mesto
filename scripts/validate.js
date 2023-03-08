@@ -6,7 +6,6 @@ function cancelSubmit(evt) {
 //функция показа ошибки
 function showInputError(formItem, inputItem, config, errorMessage) {
   const errorElement = formItem.querySelector(`.${inputItem.name}-error`);
-  console.log(errorElement);
   inputItem.classList.add(config.classInputError);
   errorElement.classList.add(config.classErrorActive);
   errorElement.textContent = errorMessage;
