@@ -6,7 +6,7 @@ export const formValidationConfig = {
   errorSelector: '.pop-up__form-input-error_active',
   classErrorActive: 'pop-up__form-input-error_active', //класс для span, который показывает текст ошибки
   buttonSubmitSelector: '.pop-up__form-save-btn', //button
-  classButtonDisable: 'pop-up__form-save-btn_disable'//класс для стилизации заблокированной кнопки
+  classButtonDisabled: 'pop-up__form-save-btn_disabled'//класс для стилизации заблокированной кнопки
 };
 
 

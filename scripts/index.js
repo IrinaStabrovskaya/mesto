@@ -1,32 +1,27 @@
-import { Card } from './card.js';
+import { Card } from './Card.js';
 import { initialCards } from './cards.js';
-import { FormValidator } from './formValidator.js';
+import { FormValidator } from './FormValidator.js';
 import { formValidationConfig } from './object.js';
-
 
 const popUpEdit = document.querySelector('.pop-up_type_edit'); // Попап редактирования профиля
 const popUpCreate = document.querySelector('.pop-up_type_create-card'); //Попап создания карточки
 const popUpBigPic = document.querySelector('.pop-up_type_big-pic'); // Попап просмотра картинки
-
 const buttonOpenPopUpEdit = document.querySelector('.profile__edit-btn'); // Кнопка редактирования профиля
 const buttonOpenPopUpAdd = document.querySelector('.profile__add-btn'); // Кнопка добавления карточки
-const buttonsClosePopUp = document.querySelectorAll('.pop-up__close-btn'); // нашли все крестики кнопки
-
+const closeButtons = document.querySelectorAll('.pop-up__close-btn'); // нашли все крестики кнопки
 const imagePopUp = document.querySelector('.pop-up__image'); // картинка в попапе
 const captionImagePopUp = document.querySelector('.pop-up__caption'); // подпись картинки в попапе
-
 const containerCards = document.querySelector('.photos__elements');
-const cardTemplate = document.querySelector('#photos__element').content;
 
 // сохранение данных на странице через внесение их в форму попапа редактирования профиля
-const formEdit = popUpEdit.querySelector('.pop-up__form'); //
+const formEdit = document.forms['profile-form']; //
 const nameInputEdit = popUpEdit.querySelector('.pop-up__form-input_type_name'); //
 const jobInputEdit = popUpEdit.querySelector('.pop-up__form-input_type_job'); //
 const profileTitle = document.querySelector('.profile__title'); //
 const profileSubtitle = document.querySelector('.profile__subtitle'); //
 
 // создание новой карточки через форму попапа добавления карточек
-const formCreate = popUpCreate.querySelector('.pop-up__form');
+const formCreate = document.forms['card-form'];
 const placeTitleInputCreate = popUpCreate.querySelector('.pop-up__form-input_type_place-title');
 const linkInputCreate = popUpCreate.querySelector('.pop-up__form-input_type_link');
 
@@ -63,7 +58,7 @@ const popups = document.querySelectorAll('.pop-up');
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', function (evt) {
     if (!evt.target.closest('.pop-up__container')) {
-      closePopUp(evt.target.closest('.pop-up'));
+      closePopUp(popup);
     };
   });
 });
@@ -79,7 +74,7 @@ function handleFormSubmitEdit(evt) {
 //функция сохранения новой карточки по нажатию на кнопку "Создать"
 function handleFormSubmitCreate(evt) {
   evt.preventDefault();
-  const newCreateCard = renderCard({ name: placeTitleInputCreate.value, link: linkInputCreate.value });
+  renderCard({ name: placeTitleInputCreate.value, link: linkInputCreate.value });
   closePopUp(popUpCreate);
 };
 
@@ -94,7 +89,7 @@ const openBigPic = (link, name) => {
 
 //создание новой карточки
 const createCard = (card) => {
-  const newCard = new Card(cardTemplate, card.link, card.name, openBigPic);
+  const newCard = new Card('#photos__element', card.link, card.name, openBigPic);
   const cardElem = newCard.generateCard();
   return cardElem;
 };
@@ -106,14 +101,12 @@ const renderCard = (card) => {
 
 //создание карточек при загрузке страницы
 initialCards.forEach((item) => {
-  createCard(item);
-
   containerCards.append(createCard(item));
 });
 
 //закрытие попапа по кнопке-крестику
 
-buttonsClosePopUp.forEach((button) => {
+closeButtons.forEach((button) => {
   const popUp = button.closest('.pop-up');
   button.addEventListener('click', () => closePopUp(popUp));
 });
@@ -125,15 +118,16 @@ formCreate.addEventListener('submit', handleFormSubmitCreate);
 buttonOpenPopUpEdit.addEventListener('click', function () {
   nameInputEdit.value = profileTitle.textContent;
   jobInputEdit.value = profileSubtitle.textContent;
-  formEditValid.cleanErrors;//(formEdit, formValidationConfig);
+  formEditValid.resetValidation();
+
   openPopUp(popUpEdit);
 });
 
 // открытие попапа добавления карточки
 buttonOpenPopUpAdd.addEventListener('click', function () {
   formCreate.reset();
-  formCreateValid.cleanErrors;
-  formCreateValid.toggleButtonSubmit;
+  formCreateValid.resetValidation();
+
   openPopUp(popUpCreate);
 });
 

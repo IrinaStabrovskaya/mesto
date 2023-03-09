@@ -41,7 +41,7 @@
 @import url(../blocks/pop-up/__form-input-error/pop-up__form-input-error.css);
 @import url(../blocks/pop-up/__form-input-error/_active/pop-up__form-input-error_active.css);
 @import url(../blocks/pop-up/__form-save-btn/pop-up__form-save-btn.css);
-@import url(../blocks/pop-up/__form-save-btn/_disable/pop-up__form-save-btn_disable.css);
+@import url(../blocks/pop-up/__form-save-btn/_disabled/pop-up__form-save-btn_disabled.css);
 @import url(../blocks/pop-up/__caption/pop-up__caption.css);
 @import url(../blocks/pop-up/__image/pop-up__image.css);
 @import url(../blocks/pop-up/__pic/pop-up__pic.css);

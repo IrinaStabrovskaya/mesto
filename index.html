@@ -47,7 +47,7 @@
       <button class="pop-up__close-btn btn-hover" type="button"></button>
       <h2 class="pop-up__title">Редактировать профиль</h2>
 
-      <form class="pop-up__form" name="form" action="#" novalidate>
+      <form class="pop-up__form" name="profile-form" action="#" novalidate>
 
         <input class="pop-up__form-input pop-up__form-input_type_name" required type="text" name="name"
           placeholder="Имя" minlength="2" maxlength="40">
@@ -68,7 +68,7 @@
     <div class="pop-up__container">
       <button class="pop-up__close-btn btn-hover" type="button"></button>
       <h2 class="pop-up__title">Новое место</h2>
-      <form class="pop-up__form" name="form" action="#" novalidate>
+      <form class="pop-up__form" name="card-form" action="#" novalidate>
 
         <input class="pop-up__form-input pop-up__form-input_type_place-title" required type="text" name="place-title"
           placeholder="Название" minlength="2" maxlength="30">
@@ -105,11 +105,10 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./scripts/formValidator.js"></script>
-  <script type="module" src="./scripts/card.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
+  <script type="module" src="./scripts/Card.js"></script>
   <script type="module" src="./scripts/cards.js"></script>
   <script type="module" src="./scripts/object.js"></script>
-  
   <script type="module" src="./scripts/index.js"></script>
 </body>
 
