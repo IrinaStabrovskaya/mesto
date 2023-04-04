@@ -1,10 +1,10 @@
 export class Card {
 
-  constructor(templateSelector, link, name, openBigPic) {
+  constructor(templateSelector, { link, name, handleCardClick }) {
     this._link = link;
     this._name = name;
     this._templateSelector = templateSelector;
-    this._openBigPic = openBigPic;
+    this._handleCardClick = handleCardClick;
   };
 
   _getTemplate() {
@@ -46,6 +46,6 @@ export class Card {
 
     this._deleteButton.addEventListener('click', () => this._deleteCard());
 
-    this._cardImage.addEventListener('click', () => this._openBigPic(this._link, this._name));
+    this._cardImage.addEventListener('click', () => this._handleCardClick());
   };
 }
