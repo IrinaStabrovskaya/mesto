@@ -6,7 +6,7 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { buttonOpenPopUpEdit, buttonOpenPopUpAdd, formEdit, formCreate, profileName, profileJob, inputName, inputJob } from '../utils/constants.js';
+import { buttonOpenPopUpEdit, buttonOpenPopUpAdd, formEdit, formCreate } from '../utils/constants.js';
 import './index.css';
 
 //создание экземпляров класса валидации
@@ -20,12 +20,12 @@ formCreateValid.enableValidation();
 const userData = new UserInfo({ profileNameSelector: '.profile__title', profileJobSelector: '.profile__subtitle' });
 
 //создание экземпляра класса PopupWithImage
-const openImage = new PopupWithImage('.pop-up_type_big-pic');
-openImage.setEventListeners();
+const popupImage = new PopupWithImage('.pop-up_type_big-pic');
+popupImage.setEventListeners();
 
 //создание новой карточки
 const createCard = ({ link, name }) => {
-  const newCard = new Card('#photos__element', { link: link, name: name, handleCardClick: () => openImage.open({ link, name }) });
+  const newCard = new Card('#photos__element', { link: link, name: name, handleCardClick: () => popupImage.open({ link, name }) });
   const cardElem = newCard.generateCard();
   return cardElem;
 };
@@ -55,8 +55,7 @@ popupEditProfile.setEventListeners();
 
 //открытие попапа по кнопке редактирования профиля
 buttonOpenPopUpEdit.addEventListener('click', function () {
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
+  popupEditProfile.setInputValues(userData.getUserInfo());
   formEditValid.resetValidation();
   popupEditProfile.open();
 });

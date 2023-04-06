@@ -38,14 +38,9 @@ export const initialCards = [
   }
 ];
 
-
-
 const buttonOpenPopUpEdit = document.querySelector('.profile__edit-btn'); // Кнопка редактирования профиля
 const buttonOpenPopUpAdd = document.querySelector('.profile__add-btn'); // Кнопка добавления карточки
 const formEdit = document.forms['profile-form'];
 const formCreate = document.forms['card-form'];
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__subtitle');
-const inputName = formEdit.querySelector('.pop-up__form-input_type_name');
-const inputJob = formEdit.querySelector('.pop-up__form-input_type_job');
-export { buttonOpenPopUpEdit, buttonOpenPopUpAdd, formEdit, formCreate, profileName, profileJob, inputName, inputJob };
+
+export { buttonOpenPopUpEdit, buttonOpenPopUpAdd, formEdit, formCreate };
