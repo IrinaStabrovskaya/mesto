@@ -21,7 +21,9 @@
   <main class="content">
 
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар пользователя">
+      <button class="profile__avatar-btn">
+        <img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар пользователя">
+      </button>
       <div class="profile__info">
         <div class="profile__description">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -54,10 +56,10 @@
 
         <span class="pop-up__form-input-error name-error"></span>
 
-        <input class="pop-up__form-input pop-up__form-input_type_job" required type="text" name="job"
+        <input class="pop-up__form-input pop-up__form-input_type_about" required type="text" name="about"
           placeholder="О себе" minlength="2" maxlength="200">
 
-        <span class="pop-up__form-input-error job-error"></span>
+        <span class="pop-up__form-input-error about-error"></span>
 
         <button class="pop-up__form-save-btn" type="submit" name="save-btn">Сохранить</button>
       </form>
@@ -95,13 +97,43 @@
     </div>
   </div>
 
+  <div class="pop-up pop-up_type_update-avatar">
+    <div class="pop-up__container pop-up__container_type_avatar">
+      <button class="pop-up__close-btn btn-hover" type="button"></button>
+      <h2 class="pop-up__title">Обновить аватар</h2>
+      <form class="pop-up__form" name="avatar-form" action="#" novalidate>
+
+        <input class="pop-up__form-input pop-up__form-input_type_link" required type="url" name="link"
+          placeholder="Ссылка на аватар">
+
+        <span class="pop-up__form-input-error link-error"></span>
+
+        <button class="pop-up__form-save-btn" type="submit" name="save-btn">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="pop-up pop-up_type_confirm">
+    <div class="pop-up__container pop-up__container_type_confirm">
+      <button class="pop-up__close-btn btn-hover" type="button"></button>
+      <h2 class="pop-up__title_type_confirm">Вы уверены?</h2>
+      <form class="pop-up__form" name="confirm" action="#">
+        <button class="pop-up__form-save-btn" type="submit" name="confirm-btn">Да</button>
+      </form>
+    </div>
+  </div>
+
+
   <template id="photos__element">
     <li class="photos__element">
       <button class="photos__delete-btn btn-hover" type="button"></button>
       <img class="photos__image" src="#" alt="">
       <div class="photos__description">
         <h2 class="photos__title"></h2>
-        <button class="photos__heart-btn btn-hover" type="button"></button>
+        <div class="photos__like">
+          <button class="photos__heart-btn btn-hover" type="button"></button>
+          <div class="photos__like-counter"></div>
+        </div>
       </div>
     </li>
   </template>

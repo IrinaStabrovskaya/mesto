@@ -40,7 +40,9 @@ export const initialCards = [
 
 const buttonOpenPopUpEdit = document.querySelector('.profile__edit-btn'); // Кнопка редактирования профиля
 const buttonOpenPopUpAdd = document.querySelector('.profile__add-btn'); // Кнопка добавления карточки
+const buttonDelCard = document.querySelector('.photos__delete-btn'); //Кнопка удаления карточки
 const formEdit = document.forms['profile-form'];
 const formCreate = document.forms['card-form'];
+const formAvatar = document.forms['avatar-form'];
 
-export { buttonOpenPopUpEdit, buttonOpenPopUpAdd, formEdit, formCreate };
+export { buttonOpenPopUpEdit, buttonOpenPopUpAdd, formEdit, formCreate, buttonDelCard, formAvatar };
