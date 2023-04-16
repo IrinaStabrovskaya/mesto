@@ -5,7 +5,7 @@ export class Api {
   }
 
   //проверка результа запроса
-  _checkResponse() {
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     }
@@ -13,42 +13,28 @@ export class Api {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  //получение данных пользователя с сервера ок
+  //получение данных пользователя с сервера
   _getInfo() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        console.log(res.json)
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
+    .then((res) => this._checkResponse(res))
   }
 
-  //замена данных пользователя на сервере ок
+  //замена данных пользователя на сервере
   setInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        about: data.about,
-        // id: data.id
-
+        about: data.about
       })
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        console.log(res.json)
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
+    .then((res) => this._checkResponse(res))
   }
-  //замена аватара пользователя ок
+  //замена аватара пользователя 
   setAvatar(avatar) {
     console.log(avatar)
     return fetch(`${this._url}/users/me/avatar`, {
@@ -58,37 +44,23 @@ export class Api {
         avatar: avatar.link
       })
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        console.log(res.json)
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
+    .then((res) => this._checkResponse(res))
   }
-  //получение начальных карточек с сервера ок
+  //получение начальных карточек с сервера
   _getInitialsCards() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
       headers: this._headers
     })
-      .then((res) => {
-
-        if (res.ok) {
-          return res.json();
-        }
-        console.log(res.json)
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
+    .then((res) => this._checkResponse(res))
   }
 
-  //получение всех нужных данных для отрисовки первоначального состояния страницы ок
+  //получение всех нужных данных для отрисовки первоначального состояния страницы
   getAllInitialData() {
     return Promise.all([this._getInfo(), this._getInitialsCards()])
-
   }
 
-  //добавить карточку ок
+  //добавить карточку
   setNewCard(data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
@@ -98,13 +70,7 @@ export class Api {
         link: data.link
       })
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        console.log(res.json)
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
+    .then((res) => this._checkResponse(res))
   }
 
   //удалить карточку
@@ -113,13 +79,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        console.log(res.json)
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
+    .then((res) => this._checkResponse(res))
   }
 
   //запрос на постановку лайка
@@ -128,17 +88,11 @@ export class Api {
       method: 'PUT',
       headers: this._headers,
       body: JSON.stringify({
-        cardId: cardId._cardId,
+        cardId: cardId,
         likes: cardId._likes
       })
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      console.log(res.json)
-      return Promise.reject(`Ошибка: ${res.status}`)
     })
-
+    .then((res) => this._checkResponse(res))
   }
 
   //запрос на удаление лайка
@@ -147,22 +101,10 @@ export class Api {
       method: 'DELETE',
       headers: this._headers,
       body: JSON.stringify({
-        cardId: cardId._cardId,
+        cardId: cardId,
         likes: cardId._likes
       })
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      console.log(res.json)
-      return Promise.reject(`Ошибка: ${res.status}`)
     })
-
+    .then((res) => this._checkResponse(res))
   }
-
-
-
-
-
-
 }

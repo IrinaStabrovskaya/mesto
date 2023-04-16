@@ -1,5 +1,4 @@
 import { Card } from '../components/Card.js';
-//import { initialCards } from '../utils/constants.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { formValidationConfig } from '../utils/constants.js';
 import { Section } from '../components/Section.js';
@@ -28,7 +27,7 @@ const cardList = new Section({
   }
 }, '.photos__elements');
 
-//загрузка и отрисовка начальных данных с сервера ок
+//загрузка и отрисовка начальных данных с сервера
 api.getAllInitialData()
   .then((data) => {
     const [profile, cards] = data;
@@ -39,7 +38,6 @@ api.getAllInitialData()
 
     cards.reverse();
     cardList.renderItems(cards);
-
   })
 
 //создание экземпляров класса валидации
@@ -52,14 +50,14 @@ formCreateValid.enableValidation();
 const formAvatarValid = new FormValidator(formValidationConfig, formAvatar);
 formAvatarValid.enableValidation();
 
-//создание экземпляра класса UserInfo ок
+//создание экземпляра класса UserInfo
 const userData = new UserInfo({ profileNameSelector: '.profile__title', profileAboutSelector: '.profile__subtitle', profileAvatarSelector: '.profile__avatar' });
 
-//создание экземпляра класса PopupWithImage ок
+//создание экземпляра класса PopupWithImage
 const popupImage = new PopupWithImage('.pop-up_type_big-pic');
 popupImage.setEventListeners();
 
-//создание экземпляра класса PopupWithForm замены аватара ок
+//создание экземпляра класса PopupWithForm замены аватара
 const popupUpdateAvatar = new PopupWithForm('.pop-up_type_update-avatar', (avatar) => {
   console.log(avatar)
   api.setAvatar(avatar)
@@ -73,6 +71,7 @@ const popupUpdateAvatar = new PopupWithForm('.pop-up_type_update-avatar', (avata
 popupUpdateAvatar.setEventListeners();
 
 userId = '29d5f67e96d268c63ee7b3ec';
+
 //создание новой карточки
 const createCard = (card) => {
   const newCard = new Card('#photos__element', {
@@ -88,12 +87,12 @@ const createCard = (card) => {
       })
     },
     handleLikeIcon: (card) => {
-      if (newCard.checkOwnerId(card.likes, userId)) {
-        api.disLikeCard(card._cardId)
+      if (newCard.checkOwnerId()) {
+        api.disLikeCard(card)
           .then((card) => { newCard.checkStatusLikes(card.likes) })
           .catch((err) => console.log(err))
       } else {
-        api.isLikeCard(card._cardId)
+        api.isLikeCard(card)
           .then((card) => { newCard.checkStatusLikes(card.likes) })
           .catch((err) => console.log(err))
       }
@@ -113,7 +112,7 @@ const popupAddCard = new PopupWithForm('.pop-up_type_create-card', (data) => {
 }, '.photos__elements');
 popupAddCard.setEventListeners();
 
-//создание экземпляра класса PopupWithForm для попапа профайла ок
+//создание экземпляра класса PopupWithForm для попапа профайла
 const popupEditProfile = new PopupWithForm('.pop-up_type_edit', (data) => {
   api.setInfo(data)
     .then(({ name, about }) => {
@@ -127,7 +126,7 @@ popupEditProfile.setEventListeners();
 const popupConfirm = new PopupWithConfirmation('.pop-up_type_confirm');
 popupConfirm.setEventListeners();
 
-//открытие попапа по кнопке редактирования профиля ок
+//открытие попапа по кнопке редактирования профиля
 buttonOpenPopUpEdit.addEventListener('click', function () {
   popupEditProfile.setInputValues(userData.getUserInfo());
   formEditValid.resetValidation();
@@ -135,7 +134,7 @@ buttonOpenPopUpEdit.addEventListener('click', function () {
 
 });
 
-// открытие попапа добавления карточки ок
+// открытие попапа добавления карточки
 buttonOpenPopUpAdd.addEventListener('click', function () {
   formCreate.reset();
   formCreateValid.resetValidation();

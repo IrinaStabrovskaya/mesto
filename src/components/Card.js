@@ -59,9 +59,10 @@ export class Card {
   };
 
   //функция проверки моего лайка, изменения состояние на активное или нет,
-  //и подсчет и запись количества лайков карточки в каунтер (ок?)
+  //и подсчет и запись количества лайков карточки в каунтер
   //ф-ция вызвана при создании карточки и как метод класса в handleLikeIcon
-  checkStatusLikes = () => {
+  checkStatusLikes(likes) {
+    this._likes = likes;
     this._counter.textContent = this._likes.length;
     if (this._likes.find((like) => like._id === this._userId)) {
       this.isLikeState();
@@ -84,7 +85,7 @@ export class Card {
     this._cardImage.alt = `фото  ${this._name}`;
     this._cardTitle.textContent = this._name;
 
-    this.checkStatusLikes(this.likes);
+    this.checkStatusLikes(this._card.likes);
     this._setEventListeners();
 
     return this._element;
@@ -97,6 +98,6 @@ export class Card {
     } else {
       this._deleteButton.remove();
     }
-    this._likeButton.addEventListener('click', () => this._handleLikeIcon(this));
+    this._likeButton.addEventListener('click', () => this._handleLikeIcon(this._cardId));
   };
 }
