@@ -4,9 +4,9 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._form = this._popup.querySelector('.pop-up__form');
-    this._inputList = this._form.querySelectorAll('.pop-up__form-input');
-    this._button = this._form.querySelectorAll('.pop-up__form-save-btn');
+    this._form = this._popup.querySelector(".pop-up__form");
+    this._inputList = this._form.querySelectorAll(".pop-up__form-input");
+    this._button = this._form.querySelector(".pop-up__form-save-btn");
   }
 
   getInputValues = () => {
@@ -16,27 +16,30 @@ export class PopupWithForm extends Popup {
     });
 
     return this._inputValues;
-  }
+  };
 
   setInputValues = (data) => {
     this._inputList.forEach((input) => {
       input.value = data[input.name];
     });
-  }
+  };
 
   setEventListeners = () => {
     super.setEventListeners();
-    this._form.addEventListener('submit', (evt) => {
+    this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._button.textContent = 'Сохранение...';
-      this._handleFormSubmit(this.getInputValues());
-      this.close();
-    }
-    );
-  }
+      const initialText = this._button.textContent;
+      this._button.textContent = "Сохранение...";
+      this._handleFormSubmit(this.getInputValues())
+        .then(() => this.close())
+        .finally(() => {
+          this._button.textContent = initialText;
+        })
+    });
+  };
 
   close = () => {
     super.close();
     this._form.reset();
-  }
+  };
 }

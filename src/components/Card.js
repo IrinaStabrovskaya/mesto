@@ -1,6 +1,8 @@
 export class Card {
-
-  constructor(templateSelector, { card, handleCardClick, handleTrashIcon, handleLikeIcon, userId }) {
+  constructor(
+    templateSelector,
+    { card, handleCardClick, handleTrashIcon, handleLikeIcon, userId }
+  ) {
     this._userId = userId;
     this._templateSelector = templateSelector;
     this._card = card;
@@ -12,46 +14,45 @@ export class Card {
     this._handleTrashIcon = handleTrashIcon;
     this._handleLikeIcon = handleLikeIcon;
     this._handleCardClick = handleCardClick;
-  };
+  }
 
   _getTemplate = () => {
-    const cardElement = document.querySelector(this._templateSelector)
-      .content
-      .querySelector('.photos__element')
+    const cardElement = document
+      .querySelector(this._templateSelector)
+      .content.querySelector(".photos__element")
       .cloneNode(true);
     return cardElement;
   };
 
   //лайк включен
   isLikeState = () => {
-    this._likeButton.classList.add('photos__heart-btn_active');
-  }
+    this._likeButton.classList.add("photos__heart-btn_active");
+  };
 
   //лайк выключен
   disLikeState = () => {
-    this._likeButton.classList.remove('photos__heart-btn_active');
-  }
+    this._likeButton.classList.remove("photos__heart-btn_active");
+  };
 
   //функция проверки id лайков
   checkOwnerId = () => {
-
     return this._likes.find((like) => like._id === this._userId);
-  }
+  };
 
   //функция переключения режима счетчика( виден/не виден)
   _counterContainerState = () => {
     if (this._likes.length == 0) {
-      this._counter.textContent = '';
-      this._counterContainer.classList.remove('photos__like_with-counter');
+      this._counter.textContent = "";
+      this._counterContainer.classList.remove("photos__like_with-counter");
     } else {
-      this._counterContainer.classList.add('photos__like_with-counter');
+      this._counterContainer.classList.add("photos__like_with-counter");
     }
-  }
+  };
 
   //проверка id владельца карточки для того чтобы установить или убрать иконку удаления(корзину)
   _isCardOwnerId = () => {
     return this._userId === this._ownerId;
-  }
+  };
 
   //функция удаления карточки
   deleteCard = () => {
@@ -68,19 +69,19 @@ export class Card {
       this.isLikeState();
     } else {
       this.disLikeState();
-    };
+    }
     this._counterContainerState();
   }
 
   generateCard = () => {
     this._element = this._getTemplate();
 
-    this._cardImage = this._element.querySelector('.photos__image');
-    this._cardTitle = this._element.querySelector('.photos__title');
-    this._likeButton = this._element.querySelector('.photos__heart-btn');
-    this._deleteButton = this._element.querySelector('.photos__delete-btn');
-    this._counterContainer = this._element.querySelector('.photos__like');
-    this._counter = this._element.querySelector('.photos__like-counter');
+    this._cardImage = this._element.querySelector(".photos__image");
+    this._cardTitle = this._element.querySelector(".photos__title");
+    this._likeButton = this._element.querySelector(".photos__heart-btn");
+    this._deleteButton = this._element.querySelector(".photos__delete-btn");
+    this._counterContainer = this._element.querySelector(".photos__like");
+    this._counter = this._element.querySelector(".photos__like-counter");
     this._cardImage.src = this._link;
     this._cardImage.alt = `фото  ${this._name}`;
     this._cardTitle.textContent = this._name;
@@ -92,12 +93,16 @@ export class Card {
   };
 
   _setEventListeners = () => {
-    this._cardImage.addEventListener('click', () => this._handleCardClick());
+    this._cardImage.addEventListener("click", () => this._handleCardClick(this));
     if (this._isCardOwnerId()) {
-      this._deleteButton.addEventListener('click', () => this._handleTrashIcon(this));
+      this._deleteButton.addEventListener("click", () =>
+        this._handleTrashIcon(this)
+      );
     } else {
       this._deleteButton.remove();
     }
-    this._likeButton.addEventListener('click', () => this._handleLikeIcon(this._cardId));
+    this._likeButton.addEventListener("click", () =>
+      this._handleLikeIcon(this._cardId)
+    );
   };
 }
